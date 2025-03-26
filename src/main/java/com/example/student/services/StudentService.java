@@ -17,7 +17,7 @@ public class StudentService {
     private RedisService redisService;
 
     public Student saveOrUpdateStudent(Student student) {
-        Student savedStudent = studentRepository.save(student);
+            Student savedStudent = studentRepository.save(student);
 
 //         Remove the old cached record from Redis
         String redisKey = "student_" + student.getId();
@@ -46,5 +46,7 @@ public class StudentService {
 
         return studentFromDB;
     }
+
+
 
 }
