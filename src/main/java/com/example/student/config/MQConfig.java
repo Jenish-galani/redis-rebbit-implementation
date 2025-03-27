@@ -10,18 +10,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MQConfig {
 
-    public static final String EXCHANGE = "message_exchange";
-    public static final String QUEUE = "message_queue"; // Fixed type
+    public static final String MESSAGE_EXCHANGE = "message_exchange";
+    public static final String MESSAGE_QUEUE = "message_queue";
     public static final String ROUTING_KEY = "message_routing"; // Fixed typo
 
     @Bean
     public Queue queue() {
-        return new Queue(QUEUE);
+        return new Queue(MESSAGE_QUEUE);
     }
 
     @Bean
     public TopicExchange exchange() {
-        return new TopicExchange(EXCHANGE);
+        return new TopicExchange(MESSAGE_EXCHANGE);
     }
 
     @Bean

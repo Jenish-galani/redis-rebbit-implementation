@@ -2,7 +2,6 @@ package com.example.student.controller;
 
 import com.example.student.config.MQConfig;
 import com.example.student.rabbitmq.CustomMessage;
-import lombok.Data;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +22,7 @@ public class MessagePublisher {
         message.setMessageId(UUID.randomUUID().toString());
         message.setMessagedate(new Date()); // ✅ Fixed issue
 
-        template.convertAndSend(MQConfig.EXCHANGE,
+        template.convertAndSend(MQConfig.MESSAGE_EXCHANGE,
                 MQConfig.ROUTING_KEY, message); // ✅ Fixed typo
 
         return "Message Published";

@@ -16,11 +16,13 @@ public class StudentService {
     @Autowired
     private RedisService redisService;
 
+    String str = "student_";
+
     public Student saveOrUpdateStudent(Student student) {
             Student savedStudent = studentRepository.save(student);
 
 //         Remove the old cached record from Redis
-        String redisKey = "student_" + student.getId();
+        String redisKey = str + student.getId();
         redisService.delete(redisKey);
 
         return savedStudent;
@@ -32,7 +34,7 @@ public class StudentService {
     }
 
     public Optional<Student> findStudentById(Long id) {
-        Student student = redisService.get("student_" + id, Student.class);
+        Student student = redisService.get(str + id, Student.class);
 
         if (student != null) {
             return Optional.of(student);
@@ -42,7 +44,7 @@ public class StudentService {
         Optional<Student> studentFromDB = studentRepository.findById(id);
 
         // Store in Redis if found
-        studentFromDB.ifPresent(s -> redisService.set("student_" + id, s, 300L));
+        studentFromDB.ifPresent(s -> redisService.set(str + id, s, 300L));
 
         return studentFromDB;
     }
