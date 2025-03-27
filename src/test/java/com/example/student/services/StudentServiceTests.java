@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class StudentServiceTests {
+class StudentServiceTests {
     @Mock
     private StudentRepository studentRepository;
 
@@ -35,7 +35,7 @@ public class StudentServiceTests {
     }
 
     @Test
-    public void saveOrUpdateStudentTests() {
+    void saveOrUpdateStudentTests() {
         Student student = new Student();
         student.setId(1L);
         student.setName("Test");
@@ -53,7 +53,7 @@ public class StudentServiceTests {
     }
 
     @Test
-    public void testFindAllStudentsTests() {
+    void testFindAllStudentsTests() {
         // Given
         Student student1 = new Student();
         student1.setId(1L);

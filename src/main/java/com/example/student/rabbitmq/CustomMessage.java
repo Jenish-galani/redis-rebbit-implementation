@@ -1,7 +1,6 @@
 package com.example.student.rabbitmq;
 
 import lombok.Data;
-
 import java.util.Date;
 
 @Data
